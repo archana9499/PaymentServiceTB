@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class PaymentServiceApplication {
 	@Autowired
 	private BPaymentService bpayservice;
 	
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	@PostMapping("/savePayment")
 	public BPayment save(@RequestBody BPayment bpayment) {
 		bpayment.setPaymentId(sgservice.getSequenceNumber(BPayment.SEQUENCE_NAME));
@@ -43,12 +44,12 @@ public class PaymentServiceApplication {
 	
 	
 	
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping("/payment")
 	public List<BPayment> getBPayment(){
 		return bpaymentrepository.findAll();
 	}
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	@GetMapping("/savePayment/{orderId}")
     public BPayment findPaymentHistoryByOrderId(@PathVariable int orderId){
               return bpayservice.findPaymentHistoryByOrderId(orderId);

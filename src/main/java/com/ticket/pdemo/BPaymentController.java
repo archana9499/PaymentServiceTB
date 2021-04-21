@@ -3,7 +3,7 @@ package com.ticket.pdemo;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +20,7 @@ public class BPaymentController {
 	
 	
 	
-	
+	@CrossOrigin(origins="http://localhost:4200")
 	//fix
 	 @RequestMapping(value = "/doPayment", method = RequestMethod.POST)
 	
